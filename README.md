@@ -58,27 +58,27 @@ The server's IP address was outside VMware's DHCP allocation range, reducing the
 
 After configuring the static IP address, I continued troubleshooting using Command Prompt and PowerShell.
 
-I used nslookup to test DNS resolution and inspected the DNS Server service status using:
+I inspected the DNS Server service status using:
 
-sc query dns
+[sc query dns](https://github.com/JakeDawber/DNS-and-Active-Directory-Health/tree/main)
 
 I also checked whether the DNS server was listening on port 53:
 
-netstat -ano | findstr ":53"
+[netstat -ano | findstr ":53"](https://github.com/JakeDawber/DNS-and-Active-Directory-Health/tree/main)
 
 The output showed DNS-related listeners on the server's IPv4 address, including 192.168.193.10:53.
 
 To investigate further, I used PowerShell's Resolve-DnsName cmdlet to query the DNS server directly:
 
-Resolve-DnsName jh-dc01.jakehomelab.test -Server 192.168.193.10 -Type A
+[Resolve-DnsName jh-dc01.jakehomelab.test -Server 192.168.193.10 -Type A](https://github.com/JakeDawber/PowerShell-Forward-and-Reverse-DNS-Lookup/tree/main)
 
 This successfully returned 192.168.193.10. I also tested the local DNS resolver and verified the server's forward and reverse DNS records. Finally, I ran:
 
-dcdiag /test:dns
+[dcdiag /test:dns](https://github.com/JakeDawber/DNS-and-Active-Directory-Health/tree/main)
 
 The diagnostic output reported that the server passed the DNS test and that the jakehomelab.test domain passed its DNS test.
 
-Skills Demonstrated
+<b>Skills Demonstrated</b>
 
 Troubleshooting Windows Server network configuration.
 
@@ -95,12 +95,3 @@ Using Command Prompt and PowerShell troubleshooting tools.
 Running Active Directory DNS diagnostics with dcdiag.
 
 
-<h2>Process</h2>
-
-DNS Service Verification: Used netstat to confirm that DNS is listening on TCP and UDP port 53 on the domain controller's assigned IPv4 address. Successful DNS resolution and Active Directory DNS diagnostics were verified separately.
-
-<img src="Screenshots/Static IP.png"/>
-
-Active Directory DNS health: Used dcdiag to verify Active Directory DNS health and from the output, we can see that the Windows server JH-dc01 successfully passes both the connectivity test and the DNS test. We can also see that the domain jakehomelab.test successfully passed the DNS test.
-
-<img src="Screenshots/AD health.png"/>
