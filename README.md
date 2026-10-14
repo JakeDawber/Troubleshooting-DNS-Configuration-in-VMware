@@ -16,7 +16,10 @@ ipconfig /all
 
 The output showed that the server was using a dynamically assigned IP address, with DHCP enabled and DNS settings provided by the VMware virtual network. This configuration was unsuitable for a domain controller that needed a consistent network address.
 
-I also inspected the VMware Workstation Virtual Network Editor to understand how DHCP was configured for the host-only network (VMnet1).
+<img src="Screenshots/Ip config.png"/>
+
+
+I also inspected the VMware Workstation Virtual Network Editor to understand how DHCP was configured for the host-only network
 
 The network used the following configuration:
 
@@ -92,7 +95,7 @@ Running Active Directory DNS diagnostics with dcdiag.
 
 DNS Service Verification: Used netstat to confirm that DNS is listening on TCP and UDP port 53 on the domain controller's assigned IPv4 address. Successful DNS resolution and Active Directory DNS diagnostics were verified separately.
 
-<img src="Screenshots/DNS error.png"/>
+<img src="Screenshots/Ip config.png"/>
 
 Active Directory DNS health: Used dcdiag to verify Active Directory DNS health and from the output, we can see that the Windows server JH-dc01 successfully passes both the connectivity test and the DNS test. We can also see that the domain jakehomelab.test successfully passed the DNS test.
 
