@@ -49,6 +49,9 @@ Default gateway - Left blank for the isolated host-only network
 
 Preferred DNS server - 192.168.193.10
 
+<img src="Screenshots/Static IP.png"/>
+
+
 The server's IP address was outside VMware's DHCP allocation range, reducing the risk of an address conflict. I configured the server to use its own static IP address as its preferred DNS server so that it could resolve records hosted by its local DNS service.
 
 <b>4. Testing and Verifying DNS</b>
@@ -75,8 +78,6 @@ dcdiag /test:dns
 
 The diagnostic output reported that the server passed the DNS test and that the jakehomelab.test domain passed its DNS test.
 
-Although some nslookup commands continued to display timeout warnings, the successful PowerShell queries and DNS diagnostic results demonstrated that the relevant DNS records were resolving correctly. The remaining timeout behaviour indicated that further investigation of DNS query responses was still warranted.
-
 Skills Demonstrated
 
 Troubleshooting Windows Server network configuration.
@@ -98,7 +99,7 @@ Running Active Directory DNS diagnostics with dcdiag.
 
 DNS Service Verification: Used netstat to confirm that DNS is listening on TCP and UDP port 53 on the domain controller's assigned IPv4 address. Successful DNS resolution and Active Directory DNS diagnostics were verified separately.
 
-<img src="Screenshots/DHCP range.png"/>
+<img src="Screenshots/Static IP.png"/>
 
 Active Directory DNS health: Used dcdiag to verify Active Directory DNS health and from the output, we can see that the Windows server JH-dc01 successfully passes both the connectivity test and the DNS test. We can also see that the domain jakehomelab.test successfully passed the DNS test.
 
