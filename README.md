@@ -4,7 +4,9 @@
 
 During the setup of my Active Directory home lab, I encountered a DNS configuration issue while installing and configuring the DNS Server role. The Add Roles and Features Wizard displayed a warning stating that no static IP address had been detected on the server. This highlighted the importance of assigning a static IP address to a domain controller to ensure that clients could reliably locate DNS and Active Directory services.
 
-After configuring DNS, I also encountered DNS request timeouts when using nslookup, despite the domain name resolving to the correct IP address. I investigated the network configuration and DNS service to identify the cause.
+
+<img src="Screenshots/DNS error.png"/>
+
 
 <b>2. Investigating the Network Configuration</b>
 
@@ -90,7 +92,7 @@ Running Active Directory DNS diagnostics with dcdiag.
 
 DNS Service Verification: Used netstat to confirm that DNS is listening on TCP and UDP port 53 on the domain controller's assigned IPv4 address. Successful DNS resolution and Active Directory DNS diagnostics were verified separately.
 
-<img src="Screenshots/DNS service verification.png"/>
+<img src="Screenshots/DNS error.png"/>
 
 Active Directory DNS health: Used dcdiag to verify Active Directory DNS health and from the output, we can see that the Windows server JH-dc01 successfully passes both the connectivity test and the DNS test. We can also see that the domain jakehomelab.test successfully passed the DNS test.
 
