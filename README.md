@@ -19,7 +19,7 @@ The output showed that the server was using a dynamically assigned IP address, w
 <img src="Screenshots/Ip config.png"/>
 
 
-I also inspected the VMware Workstation Virtual Network Editor to understand how DHCP was configured for the host-only network
+I also inspected the VMware Workstation Virtual Network Editor to understand how DHCP was configured for the host-only network (VMnet1)
 
 The network used the following configuration:
 
@@ -28,6 +28,9 @@ Subnet: 192.168.193.0/24
 Subnet mask: 255.255.255.0
 
 DHCP address pool: 192.168.193.128 – 192.168.193.254
+
+<img src="Screenshots/DHCP range.png"/>
+
 
 Reviewing the DHCP range helped me understand how VMware was allocating addresses and how to choose a suitable static IP address outside the automatically assigned pool.
 
@@ -95,7 +98,7 @@ Running Active Directory DNS diagnostics with dcdiag.
 
 DNS Service Verification: Used netstat to confirm that DNS is listening on TCP and UDP port 53 on the domain controller's assigned IPv4 address. Successful DNS resolution and Active Directory DNS diagnostics were verified separately.
 
-<img src="Screenshots/Ip config.png"/>
+<img src="Screenshots/DHCP range.png"/>
 
 Active Directory DNS health: Used dcdiag to verify Active Directory DNS health and from the output, we can see that the Windows server JH-dc01 successfully passes both the connectivity test and the DNS test. We can also see that the domain jakehomelab.test successfully passed the DNS test.
 
